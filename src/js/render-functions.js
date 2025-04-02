@@ -31,20 +31,19 @@ export const compileHtml = (prev, { webformatURL, largeImageURL, tags, likes, vi
     `;
 }
 
+export const clearGallery = (gallery) => {
+    gallery.innerHTML = "";
+}
+
 export const render = (gallery, images) => {
     const html = images.reduce(compileHtml, "");
     gallery.innerHTML = html;
 };
 
-export const showLoader = (parent) => {
-    const loader = document.createElement("li");
-    loader.id = "loader";
-    loader.innerHTML = `<div class="loader">Loading...</div>`;
-    parent.innerHTML = "";
-    parent.appendChild(loader);
+export const showLoader = (loader) => {
+    loader.classList.add("active");
 };
 
-export const hideLoader = () => {
-    const loader = document.getElementById("loader");
-    loader.remove();
+export const hideLoader = (loader) => {
+    loader.classList.remove("active");
 };

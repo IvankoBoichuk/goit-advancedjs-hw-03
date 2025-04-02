@@ -6,11 +6,12 @@ import SimpleLightbox from "simplelightbox";
 
 import "./css/iziToast.css";
 import { fetchImages } from "./js/pixabay-api";
-import { hideLoader, render, showLoader } from "./js/render-functions";
+import { clearGallery, hideLoader, render, showLoader } from "./js/render-functions";
 
 const refs = {
     form: document.getElementById("search-form"),
     gallery: document.getElementById("gallery"),
+    loader: document.getElementById("loader"),
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,8 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             return;
         }
+
+        clearGallery(refs.gallery);
         
-        showLoader(refs.gallery);
+        showLoader(refs.loader);
 
         fetchImages(query)
             .then((data) => {
@@ -42,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         message: '"Sorry, there are no images matching your search query. Please try again!".',
                         position: 'topRight',
                     });
-                    hideLoader();
+                    hideLoader(refs.loader);
                     return;
                 }
                 render(refs.gallery, data.hits);
@@ -50,6 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .catch((error) => {
                 console.error("Error fetching images:", error);
+            })
+            .finally(() => {
+                hideLoader(refs.loader);
             })
     });
 
