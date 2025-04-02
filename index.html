@@ -11,7 +11,7 @@
     <script type="module" crossorigin src="/goit-advancedjs-hw-03/index.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-advancedjs-hw-03/assets/vendor-5ObWk2rO.js">
     <link rel="stylesheet" crossorigin href="/goit-advancedjs-hw-03/assets/vendor-DumFYO8Z.css">
-    <link rel="stylesheet" crossorigin href="/goit-advancedjs-hw-03/assets/index-CQXFWsTV.css">
+    <link rel="stylesheet" crossorigin href="/goit-advancedjs-hw-03/assets/index-CqX7JMIB.css">
   </head>
   <body>
     <header class="header">
@@ -27,13 +27,16 @@
     </header>
 
     <main>
-      <form class="search" id="search-form">
-        <input type="text" name="q" required />
-        <button>Start</button>
-      </form>
-      <div class="gallery" id="gallery">
-        <!-- <a href="images/image1.jpg"><img src="images/thumbs/thumb1.jpg" alt="" title=""/></a> -->
-        <!-- <a href="images/image2.jpg"><img src="images/thumbs/thumb2.jpg" alt="" title="Beautiful Image"/></a> -->
+      <div class="container">
+        <form class="form" id="search-form">
+          <input type="text" name="q" required />
+          <button>Start</button>
+        </form>
+        <ul class="gallery" id="gallery">
+          <!-- <a href="images/image1.jpg"><img src="images/thumbs/thumb1.jpg" alt="" title=""/></a> -->
+          <!-- <a href="images/image2.jpg"><img src="images/thumbs/thumb2.jpg" alt="" title="Beautiful Image"/></a> -->
+        </ul>
+        <span class="loader" id="loader">Loading ...</span>
       </div>
     </main>
 
